@@ -1,0 +1,605 @@
+@import "tailwindcss";
+
+/* ================= BODY ================= */
+
+body {
+  margin: 0;
+  padding: 0;
+
+  /* Important */
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* ================= MAIN PAGE ================= */
+
+.birthday-page {
+  min-height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #9ddcff 0%,
+    #eaf8ff 100%
+  );
+
+  overflow-x: hidden;
+}
+
+
+/* ================= BALLOON ================= */
+
+.balloon {
+  position: absolute;
+
+  width: 65px;
+  height: 80px;
+
+  border-radius: 50% 50% 48% 48%;
+
+  cursor: pointer;
+
+  animation: floating 3s ease-in-out infinite;
+
+  transition: transform 0.2s ease;
+}
+
+.balloon:hover {
+  transform: scale(1.1);
+}
+
+
+/* Balloon String */
+
+.balloon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+  height: 65px;
+
+  background: rgba(0, 0, 0, 0.25);
+
+  left: 50%;
+  top: 78px;
+}
+
+
+/* Balloon Bottom */
+
+.balloon::before {
+  content: "";
+
+  position: absolute;
+
+  bottom: -7px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+
+  border-top: 10px solid currentColor;
+}
+
+
+/* Balloon Floating */
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+
+/* Balloon Pop */
+
+.balloon.pop {
+  animation: balloonPop 0.3s ease-out forwards;
+}
+
+@keyframes balloonPop {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+
+/* ================= BIRTHDAY CARD ================= */
+
+.birthday-card {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding: 20px;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  opacity: 0;
+
+  transform: scale(0.5);
+
+  pointer-events: none;
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+
+/* Card Show */
+
+.birthday-card.show {
+
+  opacity: 1;
+
+  transform: scale(1);
+
+  pointer-events: auto;
+}
+
+
+/* ================= CARD INNER ================= */
+
+.birthday-card-inner {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 512px;
+
+  min-height: auto;
+
+  max-height: none;
+
+  margin: auto;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
+
+/* ================= CARD CONTENT ================= */
+
+.card-content {
+
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* ================= CARD DECORATIONS ================= */
+
+.card-decorations {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* ================= DECOR ================= */
+
+.decor {
+
+  position: absolute;
+
+  display: inline-block;
+
+  user-select: none;
+
+  pointer-events: none;
+
+  opacity: 0.20;
+
+  filter: saturate(1.2);
+
+  animation:
+    decorationFloat 4s ease-in-out infinite;
+}
+
+
+/* ================= BOOKS ================= */
+
+.book {
+  font-size: 38px;
+}
+
+
+/* Book 1 */
+
+.book-1 {
+
+  top: 5%;
+  left: 4%;
+
+  transform: rotate(-15deg);
+
+  animation-delay: 0s;
+}
+
+
+/* Book 2 */
+
+.book-2 {
+
+  top: 17%;
+  right: 4%;
+
+  font-size: 42px;
+
+  transform: rotate(12deg);
+
+  animation-delay: 1s;
+}
+
+
+/* Book 3 */
+
+.book-3 {
+
+  bottom: 18%;
+  left: 3%;
+
+  font-size: 34px;
+
+  transform: rotate(15deg);
+
+  animation-delay: 2s;
+}
+
+
+/* Book 4 */
+
+.book-4 {
+
+  bottom: 6%;
+  right: 5%;
+
+  font-size: 36px;
+
+  transform: rotate(-12deg);
+
+  animation-delay: 0.5s;
+}
+
+
+/* ================= FOOD ================= */
+
+.food {
+  font-size: 34px;
+}
+
+
+/* Pani / Chilli */
+
+.food-1 {
+
+  top: 42%;
+  left: 2%;
+
+  animation-delay: 1.2s;
+}
+
+
+/* Cold Drink */
+
+.food-2 {
+
+  top: 7%;
+  right: 25%;
+
+  animation-delay: 2s;
+}
+
+
+/* Dosa */
+
+.food-3 {
+
+  bottom: 5%;
+  left: 22%;
+
+  font-size: 38px;
+
+  animation-delay: 1.5s;
+}
+
+
+/* Pizza */
+
+.food-4 {
+
+  top: 4%;
+  left: 28%;
+
+  animation-delay: 0.8s;
+}
+
+
+/* Fries */
+
+.food-5 {
+
+  bottom: 8%;
+  right: 24%;
+
+  animation-delay: 2.3s;
+}
+
+
+/* Cake */
+
+.food-6 {
+
+  top: 43%;
+  right: 2%;
+
+  animation-delay: 0.4s;
+}
+
+
+/* Decoration Animation */
+
+@keyframes decorationFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+
+/* ================= HEART ================= */
+
+.heart {
+
+  animation: heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+
+/* ================= OUTSIDE ANIMALS ================= */
+
+.animal {
+
+  display: inline-block;
+
+  animation:
+    animalBounce 2s ease-in-out infinite;
+}
+
+@keyframes animalBounce {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}
+
+
+/* ================= CARD ANIMALS ================= */
+
+.cute-animal {
+
+  display: inline-block;
+
+  animation:
+    cuteAnimal 1.6s ease-in-out infinite;
+}
+
+
+/* Different delays */
+
+.cute-animal:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.cute-animal:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.cute-animal:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.cute-animal:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+
+@keyframes cuteAnimal {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+
+/* ================= CONFETTI ================= */
+
+.confetti {
+
+  position: fixed;
+
+  width: 10px;
+  height: 15px;
+
+  top: -20px;
+
+  animation:
+    confettiFall 3s linear forwards;
+
+  z-index: 300;
+}
+
+
+@keyframes confettiFall {
+
+  to {
+    transform:
+      translateY(110vh)
+      rotate(720deg);
+  }
+}
+
+
+/* ================= BUTTON ================= */
+
+button {
+  cursor: pointer;
+}
+
+
+/* ================= CARD SCROLLBAR ================= */
+
+.birthday-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.birthday-card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.birthday-card::-webkit-scrollbar-thumb {
+  background: #f9a8d4;
+
+  border-radius: 20px;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 640px) {
+
+  .balloon {
+
+    width: 50px;
+    height: 63px;
+  }
+
+
+  .balloon::after {
+
+    height: 45px;
+
+    top: 61px;
+  }
+
+
+  .book {
+
+    font-size: 28px;
+  }
+
+
+  .food {
+
+    font-size: 27px;
+  }
+
+
+  .birthday-card {
+
+    padding: 12px;
+  }
+
+
+  .birthday-card-inner {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    max-height: none;
+  }
+}
+
+
+/* ================= VERY SMALL SCREEN ================= */
+
+@media (max-width: 400px) {
+
+  .birthday-card {
+
+    padding: 8px;
+  }
+
+
+  .birthday-card-inner {
+
+    border-radius: 25px;
+
+    padding: 20px;
+  }
+}
